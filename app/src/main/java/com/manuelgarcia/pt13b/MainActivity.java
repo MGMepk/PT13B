@@ -1,16 +1,18 @@
 package com.manuelgarcia.pt13b;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,14 +23,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+    }
+
+    private void setSupportActionBar(android.widget.Toolbar toolbar) {
     }
 
     @Override
@@ -36,6 +33,16 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    public void onSendURL(View v) {
+        EditText url = findViewById(R.id.url);
+        String link = url.getText().toString();
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        Intent chooser = Intent.createChooser(intent, link);
+
+        startActivity(chooser);
     }
 
     @Override
@@ -47,6 +54,27 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        } else if (id == R.id.menuInsta) {
+            try {
+                String igUrl = "https://www.instagram.com/android";
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(igUrl));
+                intent.setPackage("com.instagram.android");
+
+                if (intent.resolveActivity(getPackageManager()) == null) {
+                    Toast.makeText(this, "no troba instagram instal·lada, obre navegador", Toast.LENGTH_SHORT).show();
+                    Log.d("test", "no troba instagram");
+
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(igUrl)));
+                } else {
+                    Log.d("test", "invoca instagram ");
+                }
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.d("test", e.getMessage() + e.getCause());
+            }
             return true;
         }
 

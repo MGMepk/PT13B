@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">PT13 - Manuel Garcia</string>
     <string name="action_settings">Settings</string>
-    <string name="url">http://www.escoladeltreball.org</string>
+    <string name="url">https://www.escoladeltreball.org</string>
+    <string name="ig">Instagram</string>
+    <string name="go">GO</string>
 </resources>

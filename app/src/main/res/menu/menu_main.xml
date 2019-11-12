@@ -7,4 +7,19 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menuInsta"
+        android:icon="@mipmap/ig_logo"
+        android:orderInCategory="100"
+        android:title="@string/ig"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menuWhats"
+        android:icon="@mipmap/whats_logo"
+        android:orderInCategory="100"
+        android:title="@string/ig"
+        app:showAsAction="ifRoom" />
+
 </menu>
