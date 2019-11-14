@@ -24,9 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setSupportActionBar(android.widget.Toolbar toolbar) {
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -73,28 +70,25 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         } else if (id == R.id.menuWhats) {
- /*
-            try {
-                String igUrl = "https://www.instagram.com/android";
+            EditText editText = findViewById(R.id.url);
+            if (!editText.getText().toString().isEmpty()) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_TEXT, editText.getText().toString());
+                intent.setType("text/plain");
 
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(igUrl));
                 intent.setPackage("com.whatsapp");
+                Log.d("test", "Invoking whatsapp");
 
                 if (intent.resolveActivity(getPackageManager()) == null) {
-                    Toast.makeText(this, "no troba WhatsApp instal·lat, obre navegador", Toast.LENGTH_SHORT).show();
-                    Log.d("test", "no troba WhatsApp");
-
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(igUrl)));
-                } else {
-                    Log.d("test", "compart a WhatsApp ");
+                    Log.d("test", "Couldn't find whatsapp:alternatives showing");
+                    intent = new Intent(Intent.ACTION_SEND);
+                    intent.putExtra(Intent.EXTRA_TEXT, editText.getText().toString());
+                    intent.setType("text/plain");
                 }
+
                 startActivity(intent);
-            } catch (Exception e) {
-                e.printStackTrace();
-                Log.d("test", e.getMessage() + e.getCause());
             }
 
-  */
             return true;
 
         } else if (id == R.id.menuCalc) {

@@ -1,13 +1,14 @@
 package com.manuelgarcia.pt13b;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class NavegadorPropi extends AppCompatActivity {
     WebView myWebView = null;
@@ -33,8 +34,17 @@ public class NavegadorPropi extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d("test", e.getMessage());
+            Log.d("test", e.getCause() + e.getMessage());
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && myWebView.canGoBack()) {
+            myWebView.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     private class myWebViewClient extends WebViewClient {

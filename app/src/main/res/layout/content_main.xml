@@ -14,8 +14,9 @@
         android:id="@+id/url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="https://www.escoladeltreball.org"
-        tools:ignore="MissingConstraints" />
+        android:text="@string/url"
+        tools:ignore="Autofill,LabelFor,MissingConstraints,TextFields"
+        android:inputType="text" />
 
 
     <TextView
