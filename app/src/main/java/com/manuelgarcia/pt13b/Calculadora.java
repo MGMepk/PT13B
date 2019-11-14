@@ -1,8 +1,5 @@
 package com.manuelgarcia.pt13b;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +7,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,7 +26,7 @@ public class Calculadora extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculadora);
 
-        ArrayList<String> llista = new ArrayList<String>(asList("Suma", "Resta", "Multiplicació", "Divisió"));
+        ArrayList<String> llista = new ArrayList<>(asList("Suma", "Resta", "Multiplicació", "Divisió"));
 
         spinner = findViewById(R.id.spinnerOp);
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, llista);
@@ -43,33 +42,26 @@ public class Calculadora extends AppCompatActivity {
 
         edtP1.setText(op1);
         edtP2.setText(op2);
-
-        Log.d("calcu", "fins aqui ve");
-
-        Log.d("calcu", edtP1.getText().toString());
-        Log.d("calcu", edtP2.getText().toString());
-        int position = spinner.getSelectedItemPosition();
-        Log.d("calcu", String.valueOf(position));
-
     }
 
     public void operar(View view) {
+        try {
+            String op1 = edtP1.getText().toString();
+            String op2 = edtP2.getText().toString();
 
-        String op1 = edtP1.getText().toString();
-        String op2 = edtP2.getText().toString();
+            int position = spinner.getSelectedItemPosition();
 
-        int position = spinner.getSelectedItemPosition();
+            Intent intent = new Intent(this, CalcShowResult.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("primer", op1);
+            bundle.putString("segon", op2);
+            bundle.putInt("operador", position);
 
-
-        Intent intent = new Intent(this, CalcShowResult.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("primer", op1);
-        bundle.putString("segon", op2);
-        bundle.putInt("operador", position);
-
-        intent.putExtras(bundle);
-        startActivity(intent);
-
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } catch (Exception e) {
+            Log.d("Testing", e.getCause() + e.getMessage());
+        }
 
     }
 

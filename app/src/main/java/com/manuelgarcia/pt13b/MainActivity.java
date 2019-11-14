@@ -3,16 +3,15 @@ package com.manuelgarcia.pt13b;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.util.Log;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -100,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else if (id == R.id.menuCalc) {
             startActivity(new Intent(this, Calculadora.class));
-            return true;
+
         }
 
         return super.onOptionsItemSelected(item);
