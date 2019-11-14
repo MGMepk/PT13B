@@ -52,10 +52,7 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.menuInsta) {
+        if (id == R.id.menuInsta) {
             try {
                 String igUrl = "https://www.instagram.com/android";
 
@@ -75,6 +72,34 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
                 Log.d("test", e.getMessage() + e.getCause());
             }
+            return true;
+        } else if (id == R.id.menuWhats) {
+ /*
+            try {
+                String igUrl = "https://www.instagram.com/android";
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(igUrl));
+                intent.setPackage("com.whatsapp");
+
+                if (intent.resolveActivity(getPackageManager()) == null) {
+                    Toast.makeText(this, "no troba WhatsApp instal·lat, obre navegador", Toast.LENGTH_SHORT).show();
+                    Log.d("test", "no troba WhatsApp");
+
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(igUrl)));
+                } else {
+                    Log.d("test", "compart a WhatsApp ");
+                }
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.d("test", e.getMessage() + e.getCause());
+            }
+
+  */
+            return true;
+
+        } else if (id == R.id.menuCalc) {
+            startActivity(new Intent(this, Calculadora.class));
             return true;
         }
 
