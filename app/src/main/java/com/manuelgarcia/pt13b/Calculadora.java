@@ -59,6 +59,7 @@ public class Calculadora extends AppCompatActivity {
 
             intent.putExtras(bundle);
             startActivity(intent);
+
         } catch (Exception e) {
             Log.d("Testing", e.getCause() + e.getMessage());
         }

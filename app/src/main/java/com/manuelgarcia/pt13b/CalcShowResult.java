@@ -15,28 +15,28 @@ public class CalcShowResult extends AppCompatActivity {
         Intent intent = getIntent();
 
         String res = "";
-        int resInt;
+        double resDouble;
 
         int primerOp = Integer.parseInt(intent.getStringExtra("primer"));
         int segonOp = Integer.parseInt(intent.getStringExtra("segon"));
         int op = intent.getIntExtra("operador", 0);
         switch (op) {
             case 0:
-                resInt = primerOp + segonOp;
-                res = " sumar " + primerOp + " i " + segonOp + " és: " + resInt;
+                resDouble = primerOp + segonOp;
+                res = " sumar " + primerOp + " i " + segonOp + " és: " + resDouble;
 
                 break;
             case 1:
-                resInt = primerOp - segonOp;
-                res = " restar " + primerOp + " i " + segonOp + " és: " + resInt;
+                resDouble = primerOp - segonOp;
+                res = " restar " + primerOp + " i " + segonOp + " és: " + resDouble;
                 break;
             case 2:
-                resInt = primerOp * segonOp;
-                res = " multiplicar " + primerOp + " i " + segonOp + " és: " + resInt;
+                resDouble = primerOp * segonOp;
+                res = " multiplicar " + primerOp + " i " + segonOp + " és: " + resDouble;
                 break;
             case 3:
-                resInt = primerOp / segonOp;
-                res = " dividir " + primerOp + " i " + segonOp + " és: " + resInt;
+                resDouble = (double) primerOp / segonOp;
+                res = " dividir " + primerOp + " i " + segonOp + " és: " + resDouble;
                 break;
 
         }

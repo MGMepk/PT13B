@@ -16,11 +16,17 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
-        <activity android:name=".CalcShowResult"></activity>
-        <activity android:name=".Calculadora" />
+        <activity android:name=".CalcShowResult" />
+        <activity android:name=".Calculadora">
+            <intent-filter>
+                <action android:name="com.manuelgarcia.pt13b.Calculadora" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".NavegadorPropi">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+                <action android:name="com.manuelgarcia.pt13b.NavegadorPropi" />
 
                 <data
                     android:host="www.escoladeltreball.org"
@@ -36,8 +42,10 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.manuelgarcia.pt13b.MainActivity" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>
