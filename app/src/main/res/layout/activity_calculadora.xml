@@ -10,14 +10,16 @@
         android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="Autofill,LabelFor,MissingConstraints"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/editText1"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="Autofill,LabelFor,MissingConstraints"
+        android:inputType="number" />
 
     <Spinner
         android:id="@+id/spinnerOp"
@@ -27,11 +29,19 @@
         tools:ignore="MissingConstraints" />
 
     <Button
+        android:id="@+id/operar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="operar"
         android:text="@string/operar"
         app:layout_constraintTop_toBottomOf="@+id/spinnerOp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/resultView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/operar"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

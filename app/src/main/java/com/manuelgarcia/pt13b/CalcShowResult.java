@@ -2,17 +2,23 @@ package com.manuelgarcia.pt13b;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class CalcShowResult extends AppCompatActivity {
+
+    String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc_show_result);
         Intent intent = getIntent();
+
+        setTitle("Resultat Calculadora");
 
         String res = "";
         double resDouble;
@@ -41,6 +47,33 @@ public class CalcShowResult extends AppCompatActivity {
 
         }
 
-        Toast.makeText(this, "El resultat de" + res, Toast.LENGTH_LONG).show();
+        TextView text = findViewById(R.id.resultat);
+        text.setText(String.format("El resultat de%s", res));
+        result = text.getText().toString();
+
     }
+
+
+    @Override
+    public void finish() {
+        if (!result.equals("")) {
+            Intent intent = new Intent();
+            intent.putExtra("result", result);
+            setResult(RESULT_OK, intent);
+        } else {
+            Log.d("test", "passa finish ");
+            //back botó , torna com a canceled
+            Intent intent = new Intent();
+            intent.putExtra("result", "");
+            setResult(RESULT_CANCELED, intent);
+        }
+        Log.d("test", "passa ");
+        super.finish();
+    }
+
+    public void Tornar(View view) {
+        finish();
+    }
+
+
 }

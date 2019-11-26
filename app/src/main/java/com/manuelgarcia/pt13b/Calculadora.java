@@ -1,5 +1,7 @@
 package com.manuelgarcia.pt13b;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,7 +9,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -19,7 +23,7 @@ public class Calculadora extends AppCompatActivity {
 
     Spinner spinner;
     EditText edtP1, edtP2;
-
+    public static final int ACTIVITY_CALC = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,21 @@ public class Calculadora extends AppCompatActivity {
         edtP2.setText(op2);
     }
 
+    @SuppressLint("MissingSuperCall")
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        if (requestCode == ACTIVITY_CALC && resultCode == Activity.RESULT_OK){
+            Bundle extras = data.getExtras();
+            if (extras != null) {
+                String res = extras.getString("result");
+                TextView text = findViewById(R.id.resultView);
+                text.setText(res);
+            }
+
+        }
+    }
+
     public void operar(View view) {
         try {
             String op1 = edtP1.getText().toString();
@@ -58,7 +77,7 @@ public class Calculadora extends AppCompatActivity {
             bundle.putInt("operador", position);
 
             intent.putExtras(bundle);
-            startActivity(intent);
+            startActivityForResult(intent, ACTIVITY_CALC);
 
         } catch (Exception e) {
             Log.d("Testing", e.getCause() + e.getMessage());

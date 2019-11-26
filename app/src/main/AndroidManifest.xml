@@ -16,7 +16,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
-        <activity android:name=".CalcShowResult" />
+        <activity android:name=".CalcShowResult">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Calculadora" />
+        </activity>
         <activity android:name=".Calculadora">
             <intent-filter>
                 <action android:name="com.manuelgarcia.pt13b.Calculadora" />
