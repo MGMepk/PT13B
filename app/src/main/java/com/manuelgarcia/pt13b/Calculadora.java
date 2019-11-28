@@ -59,7 +59,6 @@ public class Calculadora extends AppCompatActivity {
                 TextView text = findViewById(R.id.resultView);
                 text.setText(res);
             }
-
         }
     }
 
